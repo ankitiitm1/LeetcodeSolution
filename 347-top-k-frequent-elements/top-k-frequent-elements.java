@@ -6,26 +6,17 @@ class Solution {
         }
 
     PriorityQueue<Map.Entry<Integer,Integer>> pq=
-    new PriorityQueue<>((e1,e2)-> e1.getValue()-e2.getValue());
+    new PriorityQueue<>((e1,e2)-> e2.getValue()-e1.getValue());
 
     for(Map.Entry<Integer,Integer> e: hm.entrySet()){
         pq.add(e);
-        if(pq.size()>k){
-            pq.poll();
-        }    
-      
+           
     }
 
     int[] ans =new int[k];
-    int i=0;
-    while(!pq.isEmpty()){
+    for(int i=0;i<k;i++){
         ans[i]=pq.poll().getKey();
-        i++;
     }
-
-    // for(int i=0;i<k;i++){
-    //     ans[i]=pq.poll().getKey();
-    // }
 
     return ans;
     
